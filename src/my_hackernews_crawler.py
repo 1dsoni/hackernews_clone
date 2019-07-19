@@ -29,7 +29,7 @@ class HnewsFetcher:
         self.assembleLinks(upto_page)
 
     def assembleLinks(self,upto_page = 3):
-        for pg_no in range(3):
+        for pg_no in range(upto_page):
             url = 'https://news.ycombinator.com/news?p={}'.format(pg_no+1)
             self.list_of_urls.append(url)
 
@@ -139,7 +139,6 @@ import time
 def downloader():
     if (os.getenv('STOP_CRAWL', False) == 'True'):
         print("No Crawling allowed change STOP_CRAWL config")
-        pass
     else:
         print("Crawling now")
         print('fetching articles begins@', time.ctime())
