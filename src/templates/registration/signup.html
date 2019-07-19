@@ -9,7 +9,7 @@
 {% block basic_body_block %}
   <form  method="post">
     {% csrf_token %}
-    <img src="{% static "media/favicon.ico" %}" alt=";_;" width="72" height="72">
+    <img src="/media/favicon.ico" alt=";_;" width="72" height="72">
     {{form.as_p}}
     <button type="submit">submit</button>
   </form>

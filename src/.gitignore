@@ -56,7 +56,7 @@ coverage.xml
 *.pot
 
 # Django stuff:
-#hackernews_clone/settings/local.py
+hackernews_clone/settings/local.py
 *.log
 
 # Flask stuff:

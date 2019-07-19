@@ -14,7 +14,7 @@
       <tr>
         <td>{{forloop.counter}}.</td>
         <td> <a target="_blank" href="{{article.hackernews_url}}">{{article.title}}</a> </td>
-        <td> <a href="{% url "dashboard:undelete" article.id  %}"> <img src="{%static "media/undelete.png"%}" alt="undelete" width="30" height="30"> </a> </td>
+        <td> <a href="{% url "dashboard:undelete" article.id  %}"> <img src="/media/undelete.png" alt="undelete" width="30" height="30"> </a> </td>
       </tr>
       <tr>
         <td></td>

@@ -1,11 +1,13 @@
 from .base import *
 import os
+import dj_database_url
+db_from_env = dj_database_url.config()
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'random03l%&8d(%j)pu_pvy$@s!m1rm&6rq_^=ui!*c&7=e(9r4anf41')
 
-DEBUG = False
+DEBUG = ( os.getenv('DEBUG', False) == 'True')
 
-ALLOWED_HOSTS = ['hnewsclone.herokuapp.com','herokuapp.com']
+ALLOWED_HOSTS = ['hnewsclone.herokuapp.com']
 
 DATABASES = {
     'default': dj_database_url.config(
