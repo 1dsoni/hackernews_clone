@@ -17,9 +17,9 @@
             <td></td>
           {%else%}
             <td> <a target="_blank" href="{{article.hackernews_url}}"> <strong> {{article.title}} </strong></a></td>
-            <td> <a href="{% url 'dashboard:read' article.id  %}"> <img src="{%static "media/markread.png"%}" alt="" width="25" height="25"> </a> </td>
+            <td> <a href="{% url 'dashboard:read' article.id  %}"> <img src="{%static "media/markread.png"%}" alt="markread" width="25" height="25"> </a> </td>
           {% endif %}
-          <td> <a href="{% url 'dashboard:delete' article.id  %}"> <img src="{%static "media/cross.png"%}" alt="" width="25" height="25"> </a> </td>
+          <td> <a href="{% url 'dashboard:delete' article.id  %}"> <img src="{%static "media/cross.png"%}" alt="delete" width="25" height="25"> </a> </td>
       </tr>
       <tr>
         <td></td>
