@@ -31,7 +31,7 @@ def signup(request):
             print(form.error_messages)
     else:
         form = UserCreationForm()
-        context = {'form': form}
+    context = {'form': form}
     return render(request, SIGNUP_PAGE, context = context)
 
 @login_required(redirect_field_name='login')
