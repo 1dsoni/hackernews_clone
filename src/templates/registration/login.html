@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'hackernews_clone/basic_page.html'%}
+{% load static %}
+
+{% block basic_head_block %}
+  <title>Login</title>
+{% endblock %}
+
+{% block basic_body_block %}
+  <form  method="post">
+    {% csrf_token %}
+    <img src="{% static "media/favicon.ico" %}" alt=";_;" width="72" height="72">
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+  <p >New user? <a href="{% url "dashboard:signup" %}">Sign up</a> </p>
+{% endblock %}

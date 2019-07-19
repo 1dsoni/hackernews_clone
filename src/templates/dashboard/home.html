@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'hackernews_clone/basic_page.html'%}
+{% load static %}
+
+{% block basic_head_block %}
+<title>Dashboard</title>
+{% endblock %}
+
+{% block basic_body_block %}
+  {% if has_data %}
+    <table  border="0" cellpadding="0" cellspacing="0" width="85%" style="padding:2px">
+      {% for article in news_articles %}
+      <tr style="line-height:12pt; height:10px;">
+          <td>{{forloop.counter}}.</td>
+          {% if article.id in read_article_ids %}
+            <td> <a target="_blank" href="{{article.hackernews_url}}">{{article.title}}</a> </td>
+            <td></td>
+          {%else%}
+            <td> <a target="_blank" href="{{article.hackernews_url}}"> <strong> {{article.title}} </strong></a></td>
+            <td> <a href="{% url 'dashboard:read' article.id  %}"> <img src="{%static "media/markread.png"%}" alt="" width="25" height="25"> </a> </td>
+          {% endif %}
+          <td> <a href="{% url 'dashboard:delete' article.id  %}"> <img src="{%static "media/cross.png"%}" alt="" width="25" height="25"> </a> </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>{{article.posted_age}}. Upvoted {{article.upvotes}} times. {{article.comments}} comments.</td>
+      </tr>
+      {% empty %}
+        <tr>
+          <td>Sorry, no articles right now!</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+  <p>Nothing to show now!</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'hackernews_clone/basic_page.html'%}
+{% load static %}
+
+{% block basic_head_block %}
+  <title>Login</title>
+{% endblock %}
+
+{% block basic_body_block %}
+<table>
+  <tr>
+    <td></td>
+    <td><img src="{% static "media/favicon.ico" %}" alt=";_;" width="72" height="72"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Please <a href="{% url "login" %}">log in</a> again.</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>New user? <a href="{% url "dashboard:signup"%}">Sign up</a></td>
+    <td></td>
+  </tr>
+</table>
+{% endblock %}

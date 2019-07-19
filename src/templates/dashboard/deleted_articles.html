@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'hackernews_clone/basic_page.html'%}
+{% load static %}
+
+{% block basic_head_block %}
+<title>Deleted articles</title>
+{% endblock %}
+
+{% block basic_body_block %}
+  <p>List of deleted articles :</p>
+  {% if has_data %}
+    <table>
+      {% for article in news_articles %}
+      <tr>
+        <td>{{forloop.counter}}.</td>
+        <td> <a target="_blank" href="{{article.hackernews_url}}">{{article.title}}</a> </td>
+        <td> <a href="{% url "dashboard:undelete" article.id  %}"> <img src="{%static "media/undelete.png"%}" alt="" width="30" height="30"> </a> </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>{{article.posted_age}}. Upvoted {{article.upvotes}} times. {{article.comments}} comments.</td>
+      </tr>
+
+      {% endfor %}
+    </table>
+  {% else %}
+    <tr>
+      <td>Nothing to show.</td>
+    </tr>
+  {% endif %}
+{% endblock %}
