@@ -1,9 +1,9 @@
 #!/usr/bin/env python
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hackernews_clone.settings")
 
 import django
 django.setup()
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hackernews_clone.settings")
-
 from dashboard.models import Article
 import requests
 from bs4 import BeautifulSoup
