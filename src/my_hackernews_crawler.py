@@ -148,15 +148,11 @@ def downloader():
         del news_fetcher_obj
         print('finished fetching@', time.ctime())
 
-def repeater()
-    counter = 1
-    while True:
+counter = 1
+while True:
         WAIT_SECONDS = int(os.getenv('CRAWLER_WAIT_TIME', 10))
         downloader()
         print('waiting for time ', WAIT_SECONDS+10)
         time.sleep(WAIT_SECONDS+10)
         print('while looped times : ', counter)
         counter += 1
-t1 = threading.Thread(target=repeater, args=())
-t1.start()
-# t1.join()

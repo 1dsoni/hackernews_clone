@@ -1,1 +1,1 @@
-web: python my_hackernews_crawler.py; gunicorn hackernews_clone.wsgi --log-file -
+web: gunicorn hackernews_clone.wsgi --log-file -
