@@ -10,6 +10,8 @@ from .models import Article, UserPreferences
 from .models import get_articles_for_user_orderby_posted_date
 from .models import get_deleted_articles_for_user_orderby_posted_date
 
+from hackernews_clone.settings.base import NUM_ARTICLES_TO_FETCH
+
 LOGIN_PAGE = 'registration/login.html'
 SIGNUP_PAGE = 'registration/signup.html'
 WELCOME_PAGE = 'dashboard/home.html'
@@ -36,7 +38,7 @@ def signup(request):
 
 @login_required(redirect_field_name='login')
 def index_view( request ):
-    result = get_articles_for_user_orderby_posted_date(request.user,max_articles=90)
+    result = get_articles_for_user_orderby_posted_date(request.user,max_articles=NUM_ARTICLES_TO_FETCH)
     context = {
         'read_article_ids':result['read_article_ids'],
         'news_articles':result['news_articles'],

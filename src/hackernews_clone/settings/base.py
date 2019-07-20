@@ -85,3 +85,5 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_REDIRECT_URL = 'dashboard:home'
+
+NUM_ARTICLES_TO_FETCH = int( os.getenv("NUM_ARTICLES_TO_FETCH", 10) )
