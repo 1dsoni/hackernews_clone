@@ -19,6 +19,9 @@ class News:
         self.posted_age = posted_age
         self.post_upvotes = post_upvotes
         self.post_comments = post_comments
+    def __str__(self):
+        result = str( self.post_title[:10] ) + '_' + str( self.posted_age )
+        return result
 
 class HnewsFetcher:
     def __init__(self, upto_page = 3):
@@ -102,20 +105,16 @@ class HnewsFetcher:
         if len(self.all_articles)> 0:
             for item in self.all_articles:
                 try:
+                    # print(item)
                     temp_article = Article.objects.get(id=item.post_id)
-                    should_save = False
-                    if temp_article.post_age != item.post_age:
-                        temp_article.post_age = item.post_age
-                        should_save = True
-                    if temp_article.upvotes != item.post_upvotes:
-                        temp_article.upvotes = item.post_upvotes
-                        should_save = True
-                    if temp_article.comments != item.post_comments:
-                        temp_article.comments = item.post_comments
-                        should_save = True
-                    if should_save:
-                        temp_article.save()
+                    # print('found existing item')
+                    temp_article.posted_age = item.posted_age
+                    temp_article.upvotes = item.post_upvotes
+                    temp_article.comments = item.post_comments
+                    temp_article.save()
                 except Exception as e:
+                    print('ERROR ',e)
+                    print('Creating new item', item.post_title)
                     article = Article(
                                 id = item.post_id,
                                 title = item.post_title,
@@ -152,9 +151,10 @@ def downloader():
 counter = 1
 while True:
     WAIT_SECONDS = int(os.getenv('CRAWLER_WAIT_TIME', 10))
-    t1 = threading.Thread(target=downloader, args=())
-    t1.start()
-    t1.join()
+    # t1 = threading.Thread(target=downloader, args=())
+    # t1.start()
+    # t1.join()
+    downloader()
     print('waiting for time ', WAIT_SECONDS+10)
     time.sleep(WAIT_SECONDS+10)
     print('while looped times : ', counter)
